@@ -1,2 +1,2 @@
 # leetcode
-Solutions to problems in Leetcode
+Solutions to problems which are public in Leetcode
