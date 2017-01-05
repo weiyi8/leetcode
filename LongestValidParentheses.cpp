@@ -18,25 +18,25 @@ public:
         stack<int> pos;
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] == '(') {
-                pos.push(i + 1);
+                pos.push(i);
             } else {
-                if (!pos.empty() && pos.top() > 0) {
+                if (!pos.empty() && s[pos.top()] == '(') {
                     pos.pop();
                 } else {
-                    pos.push(-(i+1));
+                    pos.push(i);
                 }
                 
             }
         }
-        int pre = s.size() + 1;
+        int pre = s.size();
         while (!pos.empty()) {
             int cur = pos.top();
             pos.pop();
-            len = abs(pre) - abs(cur) - 1;
+            len = pre - cur - 1;
             maxLen = max(maxLen, len);
             pre = cur;
         }
-        maxLen = max(maxLen, abs(pre) - 1);
+        maxLen = max(maxLen, pre);
         return maxLen;
     }
 };
